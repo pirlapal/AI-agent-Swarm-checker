@@ -1,0 +1,35 @@
+# Swarm AgentCore Local Development
+#
+# Usage:
+#   docker compose up --build
+# WebSocket endpoint: ws://localhost:8080/ws
+# Health check:       http://localhost:8080/ping
+
+services:
+  agent:
+    build:
+      context: .
+      target: development
+    ports:
+      - "8080:8080"
+    volumes:
+      - ~/.aws:/root/.aws:ro
+      - ./agent:/app/agent
+      - ./prompt:/app/prompt
+      - ./checkpoint:/app/checkpoint
+      - ./middleware:/app/middleware
+      - ./services:/app/services
+    environment:
+      - PORT=8080
+      - CONTAINER_ENV=1
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
+      - CHECKPOINT_S3_BUCKET_NAME=${CHECKPOINT_S3_BUCKET_NAME}
+      - ASSETS_BUCKET_NAME=${ASSETS_BUCKET_NAME}
+      - WORKFLOWS_TABLE_NAME=${WORKFLOWS_TABLE_NAME}
+      - BEDROCK_MODEL_ID=${BEDROCK_MODEL_ID:-us.anthropic.claude-sonnet-4-20250514-v1:0}
+      - AGENT_STEP_LIMIT=${AGENT_STEP_LIMIT:-25}
+      - AGENT_RECURSION_LIMIT=${AGENT_RECURSION_LIMIT:-250}
+      - LANGSMITH_TRACING=${LANGSMITH_TRACING:-false}
+      - LANGSMITH_API_KEY=${LANGSMITH_API_KEY:-}
+      - LANGSMITH_PROJECT=${LANGSMITH_PROJECT:-swarm-case-agentcore}
+      - PYTHONUNBUFFERED=1

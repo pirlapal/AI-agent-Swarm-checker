@@ -1,0 +1,25 @@
+{
+  "name": "kiro-swarm-checker-backend",
+  "version": "0.1.0",
+  "bin": {
+    "ai-agent-backend-swarm": "bin/ai-agent-backend-swarm.js"
+  },
+  "scripts": {
+    "build": "tsc --outDir build",
+    "watch": "tsc --watch --outDir build",
+    "test": "npm run build && node --test test/*.test.cjs",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "aws-cdk": "2.1108.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.9.3"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-bedrock-agentcore-alpha": "^2.251.0-alpha.0",
+    "aws-cdk-lib": "^2.240.0",
+    "constructs": "^10.5.0",
+    "dotenv": "^17.4.2"
+  }
+}

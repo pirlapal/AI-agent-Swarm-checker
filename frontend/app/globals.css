@@ -1,0 +1,428 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./shadcn-tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-display: var(--font-sans);
+    --font-sans: var(--font-sans);
+    --font-mono: var(--font-mono);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --color-ink: var(--ink);
+    --color-paper: var(--paper);
+    --color-hairline: var(--hairline);
+    --color-pass: var(--pass);
+    --color-fail: var(--fail);
+    --color-warn: var(--warn);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --radius-2xl: calc(var(--radius) + 8px);
+    --radius-3xl: calc(var(--radius) + 12px);
+    --radius-4xl: calc(var(--radius) + 16px);
+}
+
+:root {
+    /* Apple light palette (ported from ref) */
+    --background: #ffffff;
+    --background-secondary: #f5f5f7;
+    --surface: #f5f5f7;
+    --foreground: #1d1d1f;
+    --foreground-secondary: #86868b;
+
+    /* Legacy aliases kept so existing components keep compiling */
+    --paper: #ffffff;
+    --ink: #1d1d1f;
+    --hairline: rgba(0, 0, 0, 0.08);
+
+    --card: #f5f5f7;
+    --card-foreground: #1d1d1f;
+    --popover: #ffffff;
+    --popover-foreground: #1d1d1f;
+    --primary: #1d1d1f;
+    --primary-foreground: #ffffff;
+    --secondary: #f5f5f7;
+    --secondary-foreground: #1d1d1f;
+    --muted: #f5f5f7;
+    --muted-foreground: #86868b;
+    --accent: #f5f5f7;
+    --accent-foreground: #1d1d1f;
+    --destructive: #ff3b30;
+    --destructive-foreground: #ffffff;
+    --border: rgba(0, 0, 0, 0.08);
+    --input: rgba(0, 0, 0, 0.08);
+    --input-background: rgba(0, 0, 0, 0.03);
+    --switch-background: #d1d1d6;
+    --ring: rgba(0, 0, 0, 0.15);
+
+    /* Semantic outcome colors */
+    --pass: #34c759;
+    --warn: #ff9f0a;
+    --fail: #ff3b30;
+
+    /* Charts */
+    --chart-1: #1d1d1f;
+    --chart-2: #424245;
+    --chart-3: #6e6e73;
+    --chart-4: #86868b;
+    --chart-5: #aeaeb2;
+
+    --radius: 0.625rem;
+
+    /* Shadows — Light theme depth system */
+    --shadow-depth-1: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-depth-2: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-depth-3: 0 8px 24px rgba(0, 0, 0, 0.1);
+    --shadow-depth-4: 0 16px 48px rgba(0, 0, 0, 0.12);
+
+    /* Sidebar */
+    --sidebar: #ffffff;
+    --sidebar-foreground: #1d1d1f;
+    --sidebar-primary: #1d1d1f;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #f5f5f7;
+    --sidebar-accent-foreground: #1d1d1f;
+    --sidebar-border: rgba(0, 0, 0, 0.08);
+    --sidebar-ring: rgba(0, 0, 0, 0.15);
+}
+
+/* Ref is light-only; dark block mirrors light so the app never flips. */
+.dark {
+    --background: #ffffff;
+    --foreground: #1d1d1f;
+    --paper: #ffffff;
+    --ink: #1d1d1f;
+    --hairline: rgba(0, 0, 0, 0.08);
+
+    --card: #f5f5f7;
+    --card-foreground: #1d1d1f;
+    --popover: #ffffff;
+    --popover-foreground: #1d1d1f;
+    --primary: #1d1d1f;
+    --primary-foreground: #ffffff;
+    --secondary: #f5f5f7;
+    --secondary-foreground: #1d1d1f;
+    --muted: #f5f5f7;
+    --muted-foreground: #86868b;
+    --accent: #f5f5f7;
+    --accent-foreground: #1d1d1f;
+    --destructive: #ff3b30;
+    --border: rgba(0, 0, 0, 0.08);
+    --input: rgba(0, 0, 0, 0.08);
+    --ring: rgba(0, 0, 0, 0.15);
+
+    --pass: #34c759;
+    --warn: #ff9f0a;
+    --fail: #ff3b30;
+
+    --chart-1: #1d1d1f;
+    --chart-2: #424245;
+    --chart-3: #6e6e73;
+    --chart-4: #86868b;
+    --chart-5: #aeaeb2;
+
+    --sidebar: #ffffff;
+    --sidebar-foreground: #1d1d1f;
+    --sidebar-primary: #1d1d1f;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #f5f5f7;
+    --sidebar-accent-foreground: #1d1d1f;
+    --sidebar-border: rgba(0, 0, 0, 0.08);
+    --sidebar-ring: rgba(0, 0, 0, 0.15);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-family:
+            "Inter", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+            sans-serif;
+    }
+    html {
+        @apply font-sans;
+    }
+    ::selection {
+        background: #1d1d1f;
+        color: #ffffff;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Inter", system-ui, sans-serif;
+        letter-spacing: -0.01em;
+    }
+    code,
+    pre {
+        font-family:
+            var(--font-mono), "JetBrains Mono", "Fira Code", ui-monospace,
+            Menlo, monospace;
+    }
+
+    /* Hairline utility for legacy components */
+    .hairline {
+        border-color: var(--hairline);
+    }
+}
+
+@layer utilities {
+    /* Font utilities — display maps to sans in the ref aesthetic */
+    .font-display {
+        font-family: "Inter", system-ui, sans-serif;
+        letter-spacing: -0.02em;
+    }
+    .font-mono {
+        font-family: var(--font-mono), "JetBrains Mono", ui-monospace, Menlo,
+            monospace;
+    }
+    .tracking-display {
+        letter-spacing: -0.02em;
+    }
+    .tracking-label {
+        letter-spacing: 0.12em;
+    }
+
+    /* Semantic text colors */
+    .text-pass {
+        color: var(--pass);
+    }
+    .text-fail {
+        color: var(--fail);
+    }
+    .text-warn {
+        color: var(--warn);
+    }
+    .bg-pass\/10 {
+        background: color-mix(in srgb, var(--pass) 10%, transparent);
+    }
+    .bg-fail\/10 {
+        background: color-mix(in srgb, var(--fail) 10%, transparent);
+    }
+    .bg-warn\/10 {
+        background: color-mix(in srgb, var(--warn) 10%, transparent);
+    }
+
+    /* Apple-style glass card — solid soft gray with hairline border */
+    .glass-card {
+        background: #f5f5f7;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    /* Gradient text helper (kept solid like the ref) */
+    .gradient-text {
+        color: #1d1d1f;
+    }
+
+    /* Shadow depth system */
+    .shadow-depth-1 {
+        box-shadow: var(--shadow-depth-1);
+    }
+    .shadow-depth-2 {
+        box-shadow: var(--shadow-depth-2);
+    }
+    .shadow-depth-3 {
+        box-shadow: var(--shadow-depth-3);
+    }
+    .shadow-depth-4 {
+        box-shadow: var(--shadow-depth-4);
+    }
+
+    /* Status glow effects */
+    .glow-success {
+        box-shadow: 0 0 8px rgba(52, 199, 89, 0.2);
+    }
+    .glow-warning {
+        box-shadow: 0 0 8px rgba(255, 159, 10, 0.2);
+    }
+    .glow-error {
+        box-shadow: 0 0 8px rgba(255, 59, 48, 0.2);
+    }
+    .glow-primary {
+        box-shadow: 0 0 8px rgba(29, 29, 31, 0.15);
+    }
+
+    /* Caret for streaming tokens (preserved for swarm live view) */
+    .caret::after {
+        content: "";
+        display: inline-block;
+        width: 0.45em;
+        height: 1em;
+        margin-left: 0.08em;
+        background: currentColor;
+        vertical-align: -0.15em;
+        animation: caret-blink 1s steps(1) infinite;
+    }
+    @keyframes caret-blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    /* Thin, subtle scrollbar used by the swarm workspace (chat, preview,
+       agent dock). Mac trackpads hide scrollbars by default so we force a
+       visible 6px track to signal scrollability. */
+    .scrollbar-thin {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(29, 29, 31, 0.25) transparent;
+    }
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    .scrollbar-thin::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        background-color: rgba(29, 29, 31, 0.2);
+        border-radius: 999px;
+    }
+    .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(29, 29, 31, 0.4);
+    }
+
+    /* Reveal stagger (kept; used by existing swarm components) */
+    .reveal {
+        opacity: 0;
+        transform: translateY(8px);
+        animation: reveal-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    }
+    .reveal-1 { animation-delay: 0.05s; }
+    .reveal-2 { animation-delay: 0.14s; }
+    .reveal-3 { animation-delay: 0.23s; }
+    .reveal-4 { animation-delay: 0.32s; }
+    .reveal-5 { animation-delay: 0.41s; }
+    .reveal-6 { animation-delay: 0.5s; }
+
+    @keyframes reveal-in {
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    /* Motion utilities ported from ref */
+    @keyframes shimmer {
+        0%, 100% {
+            opacity: 0.7;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+    @keyframes pulse-glow {
+        0%, 100% {
+            opacity: 0.5;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+    @keyframes gradient-shift {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    .animate-shimmer {
+        animation: shimmer 2.25s ease-in-out infinite;
+    }
+    .animate-pulse-glow {
+        animation: pulse-glow 2s ease-in-out infinite;
+    }
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+    .animate-gradient {
+        animation: gradient-shift 3s ease infinite;
+        background-size: 200% 200%;
+    }
+
+    /* Hover lift */
+    .hover-lift {
+        transition:
+            transform 0.2s ease-out,
+            box-shadow 0.2s ease-out;
+    }
+    .hover-lift:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-depth-2);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .reveal,
+        .reveal-1,
+        .reveal-2,
+        .reveal-3,
+        .reveal-4,
+        .reveal-5,
+        .reveal-6 {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+        .caret::after,
+        .animate-shimmer,
+        .animate-pulse-glow,
+        .animate-float,
+        .animate-gradient {
+            animation: none;
+        }
+        .hover-lift {
+            transition: none;
+        }
+        .hover-lift:hover {
+            transform: none;
+        }
+    }
+}

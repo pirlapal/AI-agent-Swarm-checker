@@ -1,0 +1,11 @@
+Derived from loveneetsingh7/AI-agent-Swarm-checker.
+Shared hackathon project credited to Pranav Kishor Irlapale (@pirlapal)
+and @loveneetsingh7. See AUTHORS.md for provenance and attribution limits.
+
+The original project did not include a software LICENSE file. This public
+edition adds no blanket license grant or reassignment of contributor rights.
+
+Third-party materials retain their own terms:
+- Inter and JetBrains Mono fonts: licenses in frontend/app/fonts/.
+- shadcn stylesheet: frontend/licenses/shadcn-LICENSE.md.
+- Installed dependencies: licenses supplied by their respective packages.
